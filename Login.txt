@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.7);
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <?php
+        // Check if the form has been submitted
+        if (isset($_POST['username']) && isset($_POST['password'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            // Hardcoded login credentials (replace with your own)
+            $valid_username = 'admin';
+            $valid_password = 'mycomplexpassword';
+
+            // Check if the entered credentials match the hardcoded values
+            if ($username === $valid_username && $password === $valid_password) {
+                echo '<p style="color: green;">Login successful! Welcome, ' . $username . '.</p>';
+            } else {
+                echo '<p style="color: red;">Invalid credentials. Please try again.</p>';
+            }
+        }
+        ?>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>
